@@ -55,24 +55,41 @@ services:
   grafana:
       image: grafana/grafana:latest
       container_name: grafana-network
+      #user: "$UID:$GID"
+      user: "104"
 
+      volumes:
+      - ./grafana_data:/var/lib/grafana
+
+      expose:
+        - 3002
       ports:
-        - 3001:3001
-      user: '104'
+        - 3002:3002
+      
       labels:
         - traefik.http.routers.grafana.rule=Host(`grafana.localhost`)
+        - traefik.http.routers.grafana.service=grafana-network
         - traefik.http.routers.grafana.tls=true
-        - traefik.http.routers.grafana.tls.certresolver=lets-encrypt
-        - traefik.port=3001
+        - traefik.http.routers.grafana.tls.certresolver=lets-encryp}
+        - traefik.port=3002
 
       networks:
         - internal
         - web
 
       environment: 
-        - GF_SERVER_HTTP_PORT=3001
+        - GF_SERVER_HTTP_PORT=3002
+        - GF_SERVER_PROTOCOL=http
+        - GF_SERVER_DOMAIN=grafana.localhost
+        - GF_SERVER_ROOT_URL=https://grafana.localhost:443
+        #- GF_SERVER_ROOT_URL=http://localhost:8181/grafana/
+        - GF_SERVER_SERVE_FROM_SUB_PATH=true
+       
 
       restart: unless-stopped
+
+volumes:
+  grafana_data:
 
 networks:
   web:
