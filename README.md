@@ -37,4 +37,8 @@ Utilize o navegador web e digite a seguinte url:
 
   > http://dashboard.localhost
 
+ ![Testando o DocuWiki](doc/DocuWiki.png) 
+
+  > http://dashboard.localhost
+
  ![Testando o Traefik](doc/dashboard.png) 
