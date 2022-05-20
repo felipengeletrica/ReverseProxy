@@ -42,3 +42,6 @@ Utilize o navegador web e digite a seguinte url:
   > http://dashboard.localhost
 
  ![Testando o Traefik](doc/dashboard.png) 
+
+ > http://jenkins.localhost
+ ![Testando o jenkins](doc/jenkins.png)
