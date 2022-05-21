@@ -115,7 +115,7 @@ services:
     labels:
       - traefik.http.routers.jenkins.rule=Host(`jenkins.localhost`)
       - traefik.http.routers.jenkins.tls=true
-      - traefik.http.routers.jenkins.tls.certresolver=lets-encrypt
+      - traefik.http.routers.jenkins.tls.certresolver=letsencrypt
       - traefik.port=8083
 
     networks:
@@ -123,6 +123,25 @@ services:
       - web
 
     restart: unless-stopped
+
+  samba:
+    image: dperson/samba
+    container_name: samba
+    environment:
+      TZ: 'EST5EDT'
+    networks:
+      - default
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
 
 volumes:
   grafana_data:
