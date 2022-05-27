@@ -1,44 +1,53 @@
-# Projeto PROXY reverso 
+# Projeto PROXY reverso
 
- Utliliza o Traefik para servidor Apache, Grafana e monitoramento utilizando o dashboard próprio do Traefik.
-    
-Este projeto utiliza Docker facilitando a implantação (deploy) dos serviços. 
- ***
+Utliliza o Traefik para servidor Apache, Grafana e monitoramento utilizando o dashboard próprio do Traefik.
 
- ## Implantação dos serviços
- Abrir o terminal e execute os seguintes comandos:
+Este projeto utiliza Docker facilitando a implantação (deploy) dos serviços.
+
+---
+
+## Implantação dos serviços
+
+Abrir o terminal e execute os seguintes comandos:
 
 Construindo e excutando os serviços (pressione ctrl+c para cencelar):
 
- > $ docker-compose up --build
+> $ docker-compose up --build
 
- Utilize -d para dar um "detach" rodar o serviço na máquina
+Utilize -d para dar um "detach" rodar o serviço na máquina
 
 > $ docker-compose up --build -d
 
-Parando serviços: 
+Parando serviços:
+
 > $ docker-compose stop
 
-Removendo serviços: 
-> $ docker-compose rm
-***
+Removendo serviços:
 
- ## Testando os serviços
+> $ docker-compose rm
+
+---
+
+## Testando os serviços
 
 Utilize o navegador web e digite a seguinte url:
 
-> http://apache.localhost
+> http://apachekarla.localhost
 
- ![Testando o Apache](doc/apache.png) 
+![Testando o Apache](doc/apachekarla.PNG)
 
- > http://grafana.localhost
+http://apache1karla.localhost
 
- ![Testando o Grafana](doc/grafana.png) 
+![Testando o Apache](doc/apache1karla.PNG)
 
-  > http://dashboard.localhost
+> http://grafanakarla.localhost
 
- ![Testando o DocuWiki](doc/DocuWiki.png) 
+![Testando o Grafana](doc/grafanakarla.PNG)
 
-  > http://dashboard.localhost
+> http://docuwikikarla.localhost
 
- ![Testando o Traefik](doc/dashboard.png) 
+![Testando o DocuWiki](doc/DocuWikikarla.PNG)
+
+> http://dashkarla.localhost
+
+![Testando o Traefik](doc/dashkarla.png)
