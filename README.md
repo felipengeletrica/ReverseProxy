@@ -27,7 +27,7 @@ Removendo serviços:
 
 Utilize o navegador web e digite a seguinte url:
 
-> http://apache.localhost
+> http://apacheDoKauan.localhost
 
  ![Testando o Apache](doc/apacheDoKauan.png) 
 
@@ -39,10 +39,10 @@ Utilize o navegador web e digite a seguinte url:
 
  ![Testando o DocuWiki](doc/dokuWikiDoKauan.png) 
 
-  > http://dashboardDdashboardoKauan.localhost
+  > http://dashboardDoKauan.localhost
 
  ![Testando o Traefik](doc/traefikDoKauan.png)
 
-  > https://jenkinsdokauan.localhost/
+  > https://jenkinsDokauan.localhost/
 
  ![Testando o jenkins](doc/jenkinsDoKauan.png) 
