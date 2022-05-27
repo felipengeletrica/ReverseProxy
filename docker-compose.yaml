@@ -106,6 +106,42 @@ services:
     environment: 
       - GF_SERVER_HTTP_PORT=3000
     restart: unless-stopped
+  
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - 8083:8083
+    labels:
+      - traefik.http.routers.jenkins.rule=Host(`jenkins.localhost`)
+      - traefik.http.routers.jenkins.tls=true
+      - traefik.http.routers.jenkins.tls.certresolver=letsencrypt
+      - traefik.port=8083
+
+    networks:
+      - internal
+      - web
+
+    restart: unless-stopped
+
+  samba:
+    image: dperson/samba
+    container_name: samba
+    environment:
+      TZ: 'EST5EDT'
+    networks:
+      - default
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
 
 volumes:
   grafana_data:
