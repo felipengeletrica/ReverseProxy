@@ -1,4 +1,4 @@
-# Projeto PROXY reverso 
+-# Projeto PROXY reverso 
 
  Utliliza o Traefik para servidor Apache, Grafana e monitoramento utilizando o dashboard próprio do Traefik.
     
@@ -29,16 +29,20 @@ Utilize o navegador web e digite a seguinte url:
 
 > http://apache.localhost
 
- ![Testando o Apache](doc/apache.png) 
+ ![Testando o Apache](doc/apacheDoKauan.png) 
 
- > http://grafana.localhost
+ > http://grafanaDoKauan.localhost
 
- ![Testando o Grafana](doc/grafana.png) 
+ ![Testando o Grafana](doc/grafanaDoKauan.png) 
 
-  > http://dashboard.localhost
+  > http://dokuwikiDoKauan.localhost
 
- ![Testando o DocuWiki](doc/DocuWiki.png) 
+ ![Testando o DocuWiki](doc/dokuWikiDoKauan.png) 
 
-  > http://dashboard.localhost
+  > http://dashboardDdashboardoKauan.localhost
 
- ![Testando o Traefik](doc/dashboard.png) 
+ ![Testando o Traefik](doc/traefikDoKauan.png)
+
+  > https://jenkinsdokauan.localhost/
+
+ ![Testando o jenkins](doc/jenkinsDoKauan.png) 
