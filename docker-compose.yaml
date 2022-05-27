@@ -7,6 +7,10 @@ services:
       command:
       - --entrypoints.web.address=:80
       - --entrypoints.websecure.address=:443
+      - --entrypoints.websamba.address=:137
+      - --entrypoints.websamba2.address=:138
+      - --entrypoints.websamba3.address=:139/udp
+      - --entrypoints.websamba4.address=:445/udp
       - --providers.docker
       - --api
       - --log.level=DEBUG
@@ -16,6 +20,10 @@ services:
       ports:
         - "80:80"
         - "443:443"
+        - "137:137"
+        - "138:138"
+        - "139-139"
+        - "445:445"
       networks:
         - internal
         - web
@@ -135,13 +143,23 @@ services:
       - "137:137/udp"
       - "138:138/udp"
       - "139:139/tcp"
-      - "445:445/tcp"
+      - "446:445/tcp"
     read_only: true
     tmpfs:
       - /tmp
     restart: unless-stopped
     stdin_open: true
     tty: true
+    volumes:
+      - /mnt:/mnt:z
+      - /mnt2:/mnt2:z
+    command: '-s "Mount;/mnt" -s "Vini Volume;/mnt2;yes;no;no;vini" -u "vini;vini123" -p'
+    # labels:
+    #   - traefik.http.routers.jenkins.rule=Host(`jenkins.localhost`)
+    #   - traefik.http.routers.jenkins.tls=true
+    #   - traefik.http.routers.jenkins.tls.certresolver=letsencrypt
+    #   - traefik.port=8083
+
 
 volumes:
   grafana_data:
