@@ -27,18 +27,18 @@ Removendo serviços:
 
 Utilize o navegador web e digite a seguinte url:
 
-> http://apache.localhost
+> http://mayara4.localhost
 
  ![Testando o Apache](doc/apache.png) 
 
- > http://grafana.localhost
+ > http://mayara6.localhost
 
  ![Testando o Grafana](doc/grafana.png) 
 
-  > http://dashboard.localhost
+  > http://mayara5.localhost
 
  ![Testando o DocuWiki](doc/DocuWiki.png) 
 
-  > http://dashboard.localhost
+  > http://mayara1.localhost
 
  ![Testando o Traefik](doc/dashboard.png) 
