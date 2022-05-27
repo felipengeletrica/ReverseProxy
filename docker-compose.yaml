@@ -25,7 +25,7 @@ services:
             - "./acme.json:/acme.json"
       labels:
             # Dashboard
-            - "traefik.http.routers.traefik.rule=Host(`dashboard.localhost`)"
+            - "traefik.http.routers.traefik.rule=Host(`mayara1.localhost`)"
             - "traefik.http.routers.traefik.service=api@internal"
             - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
             - "traefik.http.routers.traefik.entrypoints=websecure"
@@ -43,7 +43,7 @@ services:
       - ./app:/app
     
     labels:
-       - traefik.http.routers.apache.rule=Host(`apache.localhost`)
+       - traefik.http.routers.apache.rule=Host(`mayara2.localhost`)
        - traefik.http.routers.apache.tls=true
        - traefik.http.routers.apache.tls.certresolver=lets-encryp
        - traefik.port=8080
@@ -52,16 +52,32 @@ services:
       - web
     restart: unless-stopped
 
+  jetty:
+    image: 'jetty'
+    container_name: jetty-network
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./app:/app
+    
+    labels:
+       - traefik.http.routers.apache.rule=Host(`mayara3.localhost`)
+       - traefik.http.routers.apache.tls=true
+       - traefik.http.routers.apache.tls.certresolver=lets-encryp
+       - traefik.port=9090
+    networks:
+      - internal
+      - web
+    restart: unless-stopped    
+
   apache1:
     image: 'bitnami/apache:latest'
     container_name: apache-network1
     ports:
       - '8081:8081'
-    volumes:
-      - ./app:/app
     
     labels:
-       - traefik.http.routers.apache1.rule=Host(`karla.localhost`)
+       - traefik.http.routers.apache1.rule=Host(`mayara4.localhost`)
        - traefik.http.routers.apache1.tls=true
        - traefik.http.routers.apache1.tls.certresolver=lets-encryp
        - traefik.port=8081
@@ -79,7 +95,7 @@ services:
       - 'dokuwiki_data:/bitnami/dokuwiki'
 
     labels:
-       - traefik.http.routers.dokuwiki.rule=Host(`dokuwiki.localhost`)
+       - traefik.http.routers.dokuwiki.rule=Host(`mayara5.localhost`)
        - traefik.http.routers.dokuwiki.tls=true
        - traefik.http.routers.dokuwiki.tls.certresolver=lets-encryp
        - traefik.port=8082
@@ -94,7 +110,7 @@ services:
     ports:
       - 3000:3000
     labels:
-      - traefik.http.routers.grafana.rule=Host(`grafana.localhost`)
+      - traefik.http.routers.grafana.rule=Host(`mayara6.localhost`)
       - traefik.http.routers.grafana.tls=true
       - traefik.http.routers.grafana.tls.certresolver=lets-encrypt
       - traefik.port=3000
